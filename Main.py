@@ -48,3 +48,25 @@ for item in tickersPerf:
 print ("Net Gain:", sum(profit))
 
 r.logout()
+
+
+
+"""
+How to not get banned from Robinhood API:
+Docs: https://robin-stocks.readthedocs.io/en/latest/
+
+A fixed interval would be easy to detect on their end.
+worried about timing of requests? generate a bimodal Gaussian distribution for waiting times.
+from random import gauss, random
+from time import sleep
+
+s = random()
+if s < 0.3:
+    t = gauss(10, 2)
+else:
+    t = gauss(30, 5)
+t = max(min(t,120),5)
+sleep(t)
+
+You can get crazier than this and sample from multiple distributions or look into research on user behavior to try and best mimic a user. I knew a guy who wrote his own mouse driver with laplacian curves to mimic a user and avoid detection.
+"""
